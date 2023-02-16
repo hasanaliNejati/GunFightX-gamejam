@@ -1,4 +1,5 @@
 using Assets.Scripts.Building.Visual;
+using Assets.Scripts.DamageManagment;
 using Assets.Scripts.EnemyWave.Enemies;
 using Assets.Scripts.Managment;
 using System.Collections;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Building
 {
-    public class BuildingBase : MonoBehaviour
+    public class BuildingBase : MonoBehaviour , ITakeDamage
     {
 
         [HideInInspector]
@@ -140,6 +141,21 @@ namespace Assets.Scripts.Building
         {
             var dis = Tools.VerticalDistance(tr.position, transform.position);
             return dis <= rangeUpdates[rangeLevel].shootRange;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            
+        }
+
+        public float Health()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Heal(float heal)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

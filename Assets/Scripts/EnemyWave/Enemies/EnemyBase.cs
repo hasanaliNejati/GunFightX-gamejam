@@ -3,25 +3,22 @@ using UnityEngine;
 using System;
 using UnityEngine.AI;
 using Assets.Scripts.Managment;
+using Assets.Scripts.DamageManagment;
 
 namespace Assets.Scripts.EnemyWave.Enemies
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyBase : MonoBehaviour
+    public class EnemyBase : MonoBehaviour , ITakeDamage 
     {
 
         public event Action<EnemyBase> OnEnemyDie;
 
-        public void Die()
-        {
-            OnEnemyDie(this);
-            Destroy(gameObject);
-        }
 
         public enum EnemyType { normal,bomb,giant}
         public EnemyType enemyType;
         
-        
+        public float health;
+        float _maxHealth;
 
         enum State { Follow, Attack }
         State state = State.Follow;
@@ -76,6 +73,30 @@ namespace Assets.Scripts.EnemyWave.Enemies
         public void StopFollowing()
         {
             agent.SetDestination(transform.position);
+        }
+
+        public void Die()
+        {
+            OnEnemyDie(this);
+            Destroy(gameObject);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+            if (health <= 0)
+                Die();
+        }
+
+        public float Health()
+        {
+            return health / _maxHealth;
+        }
+
+        public void Heal(float heal)
+        {
+            health += heal;
+            heal = Mathf.Clamp(heal,0,_maxHealth);
         }
     }
 }
