@@ -1119,7 +1119,7 @@ MonoBehaviour:
     bullet: {fileID: 0}
     visualBuilding: {fileID: 3469287837775245866}
   rangeUpdates:
-  - apearingRange: 100
+  - apearingRange: 20
     shootRange: 0
   shildUpdates:
   - shildHealth: 0

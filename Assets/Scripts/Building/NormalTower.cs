@@ -52,7 +52,6 @@ namespace Assets.Scripts.Building
 
 
             //Shoot
-            print(Vector3.AngleBetween(-v, towerUpdates[towerLevel].visualBuilding.shootPos.forward));
             if (Vector3.AngleBetween(-v, towerUpdates[towerLevel].visualBuilding.shootPos.forward) < aimOffsetShoot)
             {
                 shooting = true;
