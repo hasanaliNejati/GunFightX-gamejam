@@ -11,8 +11,7 @@ namespace Assets.Scripts.EnemyWave
         public List<EnemyInfo> enemies = new List<EnemyInfo>();
         public float safeAreaRadios = 10;
         public float spownAreaRadios = 10;
-        public int testLevelNumber =1 ;
-        [HideInInspector]
+        //[HideInInspector]
         public int waveNumber = 0;
         public int correntWaveEnemyCount
         {
@@ -32,7 +31,6 @@ namespace Assets.Scripts.EnemyWave
 
         private void Start()
         {
-            CalculateWave(testLevelNumber);
             StartWave();
         }
 
@@ -69,12 +67,12 @@ namespace Assets.Scripts.EnemyWave
 
         public void StartWave()
         {
+            CalculateWave(waveNumber);
             StartCoroutine(SpownEnemiesqueue());
         }
 
         private IEnumerator SpownEnemiesqueue()
         {
-            print(enemiesQueue.Count);
             float minDelay = 0.1f;
             float maxDelay = 1;
             float maxWaveTime = 20;
@@ -115,6 +113,8 @@ namespace Assets.Scripts.EnemyWave
 
         public void EndWave()
         {
+            waveNumber++;
+            if(OnEndWave != null)
             OnEndWave.Invoke();
         }
     }

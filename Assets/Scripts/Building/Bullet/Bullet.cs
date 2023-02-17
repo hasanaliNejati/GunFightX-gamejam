@@ -25,16 +25,15 @@ namespace Assets.Scripts.Building
 
 
 
-        public void FindRay()
         private void Awake()
         {
-            Instantiate(fire, transform.position,transform.rotation);
+            Instantiate(fire, transform.position, transform.rotation);
         }
         RaycastHit outRay;
         private void Start()
         {
             var ray = new Ray(transform.position, transform.forward);
-            
+
 
             if (Physics.Raycast(ray, out outRay, 100, layer))
             {
@@ -52,7 +51,6 @@ namespace Assets.Scripts.Building
 
         private void Update()
         {
-            FindRay();
             transform.position = Vector3.MoveTowards(transform.position, distenation, speed * Time.deltaTime);
             if (transform.position == distenation)
             {
@@ -63,10 +61,12 @@ namespace Assets.Scripts.Building
         private void Hit()
         {
             if (targetEnemy)
+            {
                 targetEnemy.TakeDamage(damage);
-            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, outRay.normal);
-            Vector3 pos = outRay.point;
-            Instantiate(impact, pos, rot);
+                Quaternion rot = Quaternion.FromToRotation(Vector3.forward, outRay.normal);
+                Vector3 pos = outRay.point;
+                Instantiate(impact, pos, rot);
+            }
             Destroy(gameObject);
         }
     }

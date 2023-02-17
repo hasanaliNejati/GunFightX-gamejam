@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.PlayerTask.Tasks;
+using Assets.Scripts.Managment;
 
 namespace Assets.Scripts.PlayerTask
 {
@@ -24,12 +25,6 @@ namespace Assets.Scripts.PlayerTask
         }
 
 
-
-        public void ShowGiftTask()
-        {
-            print("Gifttask showed.");
-        }
-
         public void SelectTask(TaskBase task)
         {
             activeTask = Instantiate(task);
@@ -40,7 +35,11 @@ namespace Assets.Scripts.PlayerTask
             if (activeTask.CanExecute())
             {
                 activeTask.Execute();
+                //if building task 
+                GameManager.instance.StartNewWave();
+
                 activeTask = null;
+
             }
         }
 

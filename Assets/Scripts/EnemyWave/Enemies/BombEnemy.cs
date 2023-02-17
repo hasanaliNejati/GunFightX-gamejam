@@ -19,6 +19,7 @@ namespace Assets.Scripts.EnemyWave.Enemies
         void Expelosion()
         {
             ApplyDie();
+            CameraShake.NormalShake();
             Instantiate(expelosionEffect,transform.position,transform.rotation);
             Destroy(gameObject);
         }

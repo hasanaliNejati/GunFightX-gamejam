@@ -47,14 +47,15 @@ namespace Assets.Scripts.Building
         public EnemyBase.EnemyType apearingEnemy;
 
 
+        public GameObject dieEffect;
 
-        
-
-
+        public float buildingHealth = 100;
+        float health;
 
 
         private void Start()
         {
+            health = buildingHealth;
             GameManager.instance.buildings.Add(this);
             UpdateSkin();
             
@@ -149,19 +150,30 @@ namespace Assets.Scripts.Building
             GameManager.instance.buildings.Remove(this);
         }
 
+        private void Die()
+        {
+            Instantiate(dieEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+
         public void TakeDamage(float damage)
         {
-            
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
         }
 
         public float Health()
         {
-            throw new System.NotImplementedException();
+            return health / buildingHealth;
         }
 
         public void Heal(float heal)
         {
-            throw new System.NotImplementedException();
+            health += heal;
+            heal = Mathf.Clamp(heal, 0, buildingHealth);
         }
     }
 }

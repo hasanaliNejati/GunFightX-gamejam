@@ -9,7 +9,7 @@ namespace Assets.Scripts.Building
         public bool shooting;
         public float aimOffsetShoot;
         public float rotateSpeed = 5;
-        [HideInInspector]
+        //[HideInInspector]
         public EnemyBase target;
 
         //LOGIC
@@ -21,6 +21,8 @@ namespace Assets.Scripts.Building
             ScanTarget();
             if (target)
                 MoveTorret();
+            else
+                shooting = false;
             if (shooting)
             {
                 Shooting();

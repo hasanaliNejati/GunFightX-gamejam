@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2012296338851972897}
   - component: {fileID: 2012296338851972898}
   - component: {fileID: 2012296338851972899}
+  - component: {fileID: 610706301}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MonoBehaviour:
   - enemyObject: {fileID: 306085661215405182, guid: 079136406e6137b409292a00975c1e08,
       type: 3}
     minWave: 0
-    possibility: 19
+    possibility: 46
   safeAreaRadios: 20
   spownAreaRadios: 10
   testLevelNumber: 5
@@ -86,4 +87,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskManager: {fileID: 2012296338851972897}
   enemyManagment: {fileID: 2012296338851972898}
+  buildings: []
   mainTower: {fileID: 0}
+  rewardManager: {fileID: 610706301}
+--- !u!114 &610706301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012296338851972911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae622e4a386d0744b9da99dada1ed0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardPanel: {fileID: 0}
+  rewardCards1:
+  - {fileID: 0}
+  rewardCards2: []
+  rewardCards3: []

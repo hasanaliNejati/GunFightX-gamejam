@@ -13,15 +13,7 @@ namespace Assets.Scripts.EnemyWave.Enemies
 
         public event Action<EnemyBase> OnEnemyDie;
 
-        public void Die()
-        {
-            ApplyDie();
-            Destroy(gameObject);
-        }
-        public void ApplyDie()
-        {
-            OnEnemyDie(this);
-        }
+        
         [Flags]
         public enum EnemyType { normal,bomb,giant}
         public EnemyType enemyType;
@@ -34,8 +26,6 @@ namespace Assets.Scripts.EnemyWave.Enemies
         public float health;
         float _maxHealth;
 
-        enum State { Follow, Attack }
-        State state = State.Follow;
 
 
         public float minDistance;
@@ -49,6 +39,11 @@ namespace Assets.Scripts.EnemyWave.Enemies
             get { return _agent ? _agent : _agent = GetComponent<NavMeshAgent>(); }
         }
 
+
+        private void Start()
+        {
+             _maxHealth = health;
+        }
 
         private void Update()
         {
@@ -96,8 +91,12 @@ namespace Assets.Scripts.EnemyWave.Enemies
 
         public void Die()
         {
-            OnEnemyDie(this);
+            ApplyDie();
             Destroy(gameObject);
+        }
+        public void ApplyDie()
+        {
+            OnEnemyDie(this);
         }
 
         public void TakeDamage(float damage)
@@ -109,6 +108,7 @@ namespace Assets.Scripts.EnemyWave.Enemies
 
         public float Health()
         {
+            print(health / _maxHealth);
             return health / _maxHealth;
         }
 
