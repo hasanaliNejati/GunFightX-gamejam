@@ -3,11 +3,12 @@ using Assets.Scripts.EnemyWave.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NormalEnemy : EnemyBase
 {
 
-
+    public float attackPower;
     public float attackDelay = 2;
     public float giveDamageDelay = 1;
     float _attackDelay;
@@ -34,6 +35,20 @@ public class NormalEnemy : EnemyBase
     {
         yield return new WaitForSeconds(time);
         //take damage
+        building.TakeDamage(attackPower);
+    }
+
+    public override void Die()
+    {
+        ApplyDie();
+
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+        animator.SetBool("Death", true);
+        this.enabled = false;
+
+        Destroy(gameObject, 3);
     }
 
 }

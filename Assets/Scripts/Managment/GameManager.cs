@@ -40,7 +40,8 @@ namespace Assets.Scripts.Managment
 
         public void Lose()
         {
-            
+
+            SceneLoader.Restart();
         }
 
 

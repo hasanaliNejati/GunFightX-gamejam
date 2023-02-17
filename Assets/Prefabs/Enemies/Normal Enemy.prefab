@@ -649,6 +649,7 @@ MonoBehaviour:
   health: 120
   minDistance: 1.5
   target: {fileID: 0}
+  attackPower: 10
   attackDelay: 2
   giveDamageDelay: 1
 --- !u!136 &2239152135086061931

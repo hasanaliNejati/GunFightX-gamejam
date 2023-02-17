@@ -13,7 +13,9 @@ namespace Assets.Scripts.EnemyWave.Enemies
 
         public event Action<EnemyBase> OnEnemyDie;
 
-        
+
+        public bool IsDeath = false;
+
         [Flags]
         public enum EnemyType { normal,bomb,giant}
         public EnemyType enemyType;
@@ -89,13 +91,14 @@ namespace Assets.Scripts.EnemyWave.Enemies
             agent.SetDestination(transform.position);
         }
 
-        public void Die()
+        public virtual void Die()
         {
             ApplyDie();
             Destroy(gameObject);
         }
         public void ApplyDie()
         {
+            IsDeath = true;
             OnEnemyDie(this);
         }
 

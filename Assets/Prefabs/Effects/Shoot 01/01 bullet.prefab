@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 2
+  damage: 20
   layer:
     serializedVersion: 2
     m_Bits: 832

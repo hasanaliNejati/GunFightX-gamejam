@@ -152,7 +152,10 @@ namespace Assets.Scripts.Building
 
         private void Die()
         {
+            if(dieEffect)
             Instantiate(dieEffect, transform.position, transform.rotation);
+            if (GameManager.instance.mainTower == this)
+                GameManager.instance.Lose();
             Destroy(gameObject);
         }
 

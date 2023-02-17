@@ -20,7 +20,12 @@ namespace Assets.Scripts.Building
         {
             ScanTarget();
             if (target)
+            {
+
+                if (target.IsDeath)
+                    target = null;
                 MoveTorret();
+            }
             else
                 shooting = false;
             if (shooting)
