@@ -2,7 +2,9 @@ using Assets.Scripts.DamageManagment;
 using Assets.Scripts.EnemyWave.Enemies;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Assets.Scripts.Building
 {
@@ -12,6 +14,8 @@ namespace Assets.Scripts.Building
         public float damage = 20;
         public LayerMask layer;
 
+        public GameObject fire;
+        public GameObject impact;
         //LOGIC
         Vector3 distenation;
         Vector3 startPos;
@@ -22,9 +26,15 @@ namespace Assets.Scripts.Building
 
 
         public void FindRay()
+        private void Awake()
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit outRay;
+            Instantiate(fire, transform.position,transform.rotation);
+        }
+        RaycastHit outRay;
+        private void Start()
+        {
+            var ray = new Ray(transform.position, transform.forward);
+            
 
             if (Physics.Raycast(ray, out outRay, 100, layer))
             {
@@ -54,6 +64,9 @@ namespace Assets.Scripts.Building
         {
             if (targetEnemy)
                 targetEnemy.TakeDamage(damage);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, outRay.normal);
+            Vector3 pos = outRay.point;
+            Instantiate(impact, pos, rot);
             Destroy(gameObject);
         }
     }

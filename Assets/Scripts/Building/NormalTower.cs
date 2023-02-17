@@ -15,7 +15,7 @@ namespace Assets.Scripts.Building
         //LOGIC
         float _delay;
 
-        
+
         public override void CustomUpdate()
         {
             ScanTarget();
@@ -45,14 +45,13 @@ namespace Assets.Scripts.Building
 
 
             //Aim
-            var deg = (Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg) ;
+            var deg = (Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg);
 
             var root = towerUpdates[towerLevel].visualBuilding.rotateRoot;
             root.rotation = Quaternion.Lerp(root.rotation, Quaternion.Euler(0, deg, 0), rotateSpeed * Time.deltaTime);
 
 
             //Shoot
-            print(Vector3.AngleBetween(-v, towerUpdates[towerLevel].visualBuilding.shootPos.forward));
             if (Vector3.AngleBetween(-v, towerUpdates[towerLevel].visualBuilding.shootPos.forward) < aimOffsetShoot)
             {
                 shooting = true;
@@ -68,6 +67,7 @@ namespace Assets.Scripts.Building
             if (_delay <= 0)
             {
                 _delay = towerUpdates[towerLevel].shootRate;
+                //_delay = Random.Range(towerUpdates[towerLevel].shootRate , towerUpdates[towerLevel].shootRate + 0.1f);
                 Shoot();
             }
         }

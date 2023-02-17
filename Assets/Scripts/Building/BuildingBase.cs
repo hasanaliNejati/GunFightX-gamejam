@@ -2,6 +2,7 @@ using Assets.Scripts.Building.Visual;
 using Assets.Scripts.DamageManagment;
 using Assets.Scripts.EnemyWave.Enemies;
 using Assets.Scripts.Managment;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,13 +48,14 @@ namespace Assets.Scripts.Building
 
 
 
-
+        
 
 
 
 
         private void Start()
         {
+            GameManager.instance.buildings.Add(this);
             UpdateSkin();
             
         }
@@ -85,7 +87,6 @@ namespace Assets.Scripts.Building
                 if (item.enemyType != apearingEnemy)
                     continue;
                 float dis = Tools.VerticalDistance(item.transform.position, transform.position);
-                print(dis);
                 if (item.FollowingDistance() > dis)
                 {
                     item.target = transform;
@@ -127,20 +128,25 @@ namespace Assets.Scripts.Building
             return result.ToArray();
         }
 
-        protected bool IsInsideCircle(Transform tr, float radios)
+        public bool IsInsideCircle(Transform tr, float radios)
         {
             var dis = Tools.VerticalDistance(tr.position, transform.position);
             return dis <= radios;
         }
-        protected bool IsInsideShootRange(Transform tr)
+        public bool IsInsideShootRange(Transform tr)
         {
             var dis = Tools.VerticalDistance(tr.position, transform.position);
             return dis <= rangeUpdates[rangeLevel].shootRange;
         }
-        protected bool IsInsideApearingRange(Transform tr)
+        public bool IsInsideApearingRange(Transform tr)
         {
             var dis = Tools.VerticalDistance(tr.position, transform.position);
-            return dis <= rangeUpdates[rangeLevel].shootRange;
+            return dis <= rangeUpdates[rangeLevel].apearingRange;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.instance.buildings.Remove(this);
         }
 
         public void TakeDamage(float damage)
