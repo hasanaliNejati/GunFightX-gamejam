@@ -14,21 +14,25 @@ namespace Assets.Scripts.EnemyWave.Enemies
 
         public void Die()
         {
-            OnEnemyDie(this);
+            ApplyDie();
             Destroy(gameObject);
         }
-
+        public void ApplyDie()
+        {
+            OnEnemyDie(this);
+        }
+        [Flags]
         public enum EnemyType { normal,bomb,giant}
         public EnemyType enemyType;
-        
-        
 
-        enum State { Follow, Attack }
-        State state = State.Follow;
+        public Animator animator;
+
+        protected enum State { Follow, Attack }
+        protected State state = State.Follow;
 
 
         public float minDistance;
-
+        [HideInInspector]
         public Transform target;
 
         //LOGIC 
@@ -48,6 +52,10 @@ namespace Assets.Scripts.EnemyWave.Enemies
             else
                 state = State.Follow;
 
+            CoustomUpdate();
+        }
+        public virtual void CoustomUpdate()
+        {
             switch (state)
             {
                 case State.Follow:
@@ -59,6 +67,7 @@ namespace Assets.Scripts.EnemyWave.Enemies
                 default:
                     break;
             }
+            
         }
 
         public float FollowingDistance()

@@ -11,7 +11,7 @@ namespace Assets.Scripts.EnemyWave
         public List<EnemyInfo> enemies = new List<EnemyInfo>();
         public float safeAreaRadios = 10;
         public float spownAreaRadios = 10;
-
+        public int testLevelNumber =1 ;
         [HideInInspector]
         public int waveNumber = 0;
         public int correntWaveEnemyCount
@@ -32,7 +32,7 @@ namespace Assets.Scripts.EnemyWave
 
         private void Start()
         {
-            CalculateWave(1);
+            CalculateWave(testLevelNumber);
             StartWave();
         }
 

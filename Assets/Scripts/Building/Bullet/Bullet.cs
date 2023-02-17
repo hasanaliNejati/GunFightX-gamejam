@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Assets.Scripts.Building
 {
@@ -9,13 +11,20 @@ namespace Assets.Scripts.Building
         public float speed = 20;
         public LayerMask layer;
 
+        public GameObject fire;
+        public GameObject impact;
         //LOGIC
         Vector3 distenation;
         Vector3 startPos;
+        private void Awake()
+        {
+            Instantiate(fire, transform.position,transform.rotation);
+        }
+        RaycastHit outRay;
         private void Start()
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit outRay;
+            var ray = new Ray(transform.position, transform.forward);
+            
 
             if (Physics.Raycast(ray, out outRay, 100, layer))
             {
@@ -38,6 +47,9 @@ namespace Assets.Scripts.Building
 
         private void Hit()
         {
+            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, outRay.normal);
+            Vector3 pos = outRay.point;
+            Instantiate(impact, pos, rot);
             Destroy(gameObject);
         }
     }
