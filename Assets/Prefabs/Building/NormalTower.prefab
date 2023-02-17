@@ -716,15 +716,15 @@ MonoBehaviour:
   shildLevel: 0
   towerUpdates:
   - shootRate: 0.2
-    bullet: {fileID: 3230680134468929643, guid: 9fbb846ee71ce534eb3a5393c8fa1243,
+    bullet: {fileID: 3230680134468929643, guid: d8c43f751b9ef5f46b425fb2b7d66c93,
       type: 3}
     visualBuilding: {fileID: 1018474889293380250}
   - shootRate: 0.13
-    bullet: {fileID: 3230680134468929643, guid: 9fbb846ee71ce534eb3a5393c8fa1243,
+    bullet: {fileID: 3230680134468929643, guid: d8c43f751b9ef5f46b425fb2b7d66c93,
       type: 3}
     visualBuilding: {fileID: 5056109091774191837}
   - shootRate: 0.1
-    bullet: {fileID: 3230680134468929643, guid: 9fbb846ee71ce534eb3a5393c8fa1243,
+    bullet: {fileID: 3230680134468929643, guid: d8c43f751b9ef5f46b425fb2b7d66c93,
       type: 3}
     visualBuilding: {fileID: 3467055430501010661}
   rangeUpdates:
@@ -732,12 +732,13 @@ MonoBehaviour:
     shootRange: 10
   shildUpdates:
   - shildHealth: 0
+    shildVisal: {fileID: 0}
   apearingEnemy: 0
   dieEffect: {fileID: 0}
   buildingHealth: 100
   shooting: 0
   aimOffsetShoot: 5
-  rotateSpeed: 20
+  rotateSpeed: 5
   target: {fileID: 0}
 --- !u!1 &1022396732035004254
 GameObject:

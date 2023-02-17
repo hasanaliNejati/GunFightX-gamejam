@@ -38,6 +38,7 @@ namespace Assets.Scripts.Building
         public class ShildData
         {
             public int shildHealth;
+            public GameObject shildVisal;
         }
 
         public TowerData[] towerUpdates;
@@ -53,13 +54,13 @@ namespace Assets.Scripts.Building
         float health;
 
 
-        private void Start()
+        public void UpdateLevel()
         {
-            health = buildingHealth;
-            GameManager.instance.buildings.Add(this);
             UpdateSkin();
-            
+            UpdateShild();
+            UpdateRange();
         }
+
         void UpdateSkin()
         {
             for (int i = 0; i < towerUpdates.Length; i++)
@@ -68,6 +69,28 @@ namespace Assets.Scripts.Building
             }
 
         }
+
+        public void UpdateShild()
+        {
+            for (int i = 0; i < shildUpdates.Length; i++)
+            {
+                shildUpdates[i].shildVisal.SetActive(i == shildLevel);
+            }
+        }
+        private void UpdateRange()
+        {
+            
+        }
+
+        private void Start()
+        {
+            health = buildingHealth;
+            GameManager.instance.buildings.Add(this);
+            UpdateSkin();
+            
+        }
+
+        
 
         private void Update()
         {

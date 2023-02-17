@@ -70,7 +70,6 @@ MonoBehaviour:
     possibility: 46
   safeAreaRadios: 20
   spownAreaRadios: 10
-  testLevelNumber: 5
   waveNumber: 0
   aliveEnemies: []
 --- !u!114 &2012296338851972899
@@ -105,5 +104,6 @@ MonoBehaviour:
   rewardPanel: {fileID: 0}
   rewardCards1:
   - {fileID: 0}
-  rewardCards2: []
+  rewardCards2:
+  - {fileID: 0}
   rewardCards3: []

@@ -12,7 +12,6 @@ namespace Assets.Scripts.PlayerTask.Tasks
         {
             if (GameManager.instance.mainTower.IsInsideApearingRange(transform))
             {
-                print("False");
                 float lowerest = 100;
                 foreach (var item in GameManager.instance.buildings)
                 {

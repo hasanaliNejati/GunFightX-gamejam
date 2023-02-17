@@ -22,7 +22,7 @@ public class RangeShower : MonoBehaviour
         }
         else
         {
-            show = Input.GetMouseButton(1);
+            show = Input.GetKey(KeyCode.Space);
         }
 
         shootRange.gameObject.SetActive(show);

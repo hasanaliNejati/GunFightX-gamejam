@@ -71,11 +71,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ae031a4d348c64aa634d5975403e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDeath: 0
   enemyType: 1
   animator: {fileID: 647962646881070484}
-  health: 50
+  health: 80
   minDistance: 0.7
   target: {fileID: 0}
+  expelosionPower: 50
   expelosionEffect: {fileID: 7470190109750771773, guid: 6b91e8ed4e9b1cf499ba8590d98d3289,
     type: 3}
 --- !u!136 &306085661215405155

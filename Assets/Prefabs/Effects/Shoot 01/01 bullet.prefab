@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 20
+  damage: 3
   layer:
     serializedVersion: 2
     m_Bits: 832
-  fire: {fileID: 1000012903210382, guid: 28467e63c52ed734482b90a097f50952, type: 3}
-  impact: {fileID: 1879272669879180, guid: d23f4cad469ca344eae7e08f43041957, type: 3}
+  fire: {fileID: 1000012903210382, guid: 0d56cb45e8eb22149b3c79b592855ae1, type: 3}
+  impact: {fileID: 1879272669879180, guid: a25e8dcb8ba93d741a19002966aa4f6c, type: 3}
 --- !u!199 &199187720539646952
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -19377,7 +19377,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.186
+  m_Volume: 0.381
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -24,6 +24,7 @@ public class SoundEffect : MonoBehaviour
     {
         if (playOnAwake)
         {
+            print("aaaaaaaaaa");
             if (playAndDestroy)
                 PlayAndDestroy();
             else

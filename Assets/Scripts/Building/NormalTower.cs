@@ -48,6 +48,8 @@ namespace Assets.Scripts.Building
 
         void MoveTorret()
         {
+            if (!target)
+                return;
             var v = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z) - transform.position;
 
 

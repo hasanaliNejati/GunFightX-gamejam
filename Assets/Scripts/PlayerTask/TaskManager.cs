@@ -14,14 +14,14 @@ namespace Assets.Scripts.PlayerTask
         ITask activeTask;
         private void Update()
         {
-            if (activeTask != null && Input.GetMouseButtonUp(0))
+            if (activeTask != null && Input.GetMouseButtonUp(1))
             {
                 ExecuteTask();
             }
-            if (activeTask != null && Input.GetMouseButtonUp(1))
-            {
-                CancelTask();
-            }
+            //if (activeTask != null && Input.GetMouseButtonUp(1))
+            //{
+            //    CancelTask();
+            //}
         }
 
 
@@ -34,6 +34,7 @@ namespace Assets.Scripts.PlayerTask
         {
             if (activeTask.CanExecute())
             {
+
                 activeTask.Execute();
                 //if building task 
                 GameManager.instance.StartNewWave();
